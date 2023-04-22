@@ -23,7 +23,9 @@ describe('<MenuLink />', () => {
     );
   });
   it('should match snapshot', () => {
-    const { container } = renderTheme(<MenuLink>Children</MenuLink>);
+    const { container } = renderTheme(
+      <MenuLink link="http://localhost">Children</MenuLink>,
+    );
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       .c0 {
@@ -39,7 +41,7 @@ describe('<MenuLink />', () => {
       .c0::after {
         content: '';
         position: absolute;
-        bottom: 0;
+        bottom: 0.75rem;
         left: 50%;
         width: 0%;
         height: 0.2rem;
@@ -55,6 +57,7 @@ describe('<MenuLink />', () => {
 
       <a
         class="c0"
+        href="http://localhost"
         target="_self"
       >
         Children
