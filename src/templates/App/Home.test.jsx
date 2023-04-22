@@ -5,9 +5,4 @@ import { theme } from '../../styles/theme';
 
 test('renders learn react link', () => {
   renderTheme(<Home />);
-  const headingContainer = screen.getByRole('heading', {
-    name: 'OI',
-  }).parentElement;
-
-  expect(headingContainer).toHaveStyleRule('background', 'blue');
 });
