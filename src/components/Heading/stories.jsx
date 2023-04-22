@@ -1,7 +1,4 @@
-import { ThemeProvider } from 'styled-components';
 import { Heading } from '.';
-import { theme } from '../../styles/theme';
-import { GlobalStyles } from '../../styles/global-styles';
 
 export default {
   title: 'Heading',
