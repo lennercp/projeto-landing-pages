@@ -55,8 +55,8 @@ export default {
 };
 
 export const Template = (args) => {
-  return(
-    < div >
+  return (
+    <div>
       < ${name} { ...args } />
     </div >
   );
@@ -86,7 +86,6 @@ function createFiles(path, name) {
   };
 
   if (name !== 'components') {
-    console.log('name', name);
     const writeFile = writeToPath(path);
     const toFileMissingBool = (file) => !fileExists(path)(file);
     const checkAllMissing = (acc, cur) => acc && cur;

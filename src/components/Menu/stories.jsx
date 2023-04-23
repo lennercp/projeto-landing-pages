@@ -1,21 +1,22 @@
 import { Menu } from '.';
-
+import linksMock from '../NavLinks/mock';
 export default {
   title: 'Menu',
   component: Menu,
   args: {
-    children: 'example',
-  },
-  argTypes: {
-    children: { type: 'string' },
+    links: linksMock,
+    logoData: {
+      text: 'Logo',
+      link: '#target',
+      srcImage: '',
+    },
   },
 };
 
 export const Template = (args) => {
-  return(
-    < div >
-      < Menu { ...args } />
-    </div >
+  return (
+    <div>
+      <Menu {...args} />
+    </div>
   );
 };
-
