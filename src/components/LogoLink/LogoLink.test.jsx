@@ -24,7 +24,9 @@ describe('<LogoLink />', () => {
   });
 
   it('should match snapshot', () => {
-    const { container } = renderTheme(<LogoLink></LogoLink>);
+    const { container } = renderTheme(
+      <LogoLink link="#target" text="Olá mundo"></LogoLink>,
+    );
 
     expect(container.firstChild).toMatchSnapshot();
   });
