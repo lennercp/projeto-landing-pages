@@ -9,4 +9,11 @@ describe('<GridImage />', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+  it('should render grid content', () => {
+    const { container } = renderTheme(
+      <GridImage {...mock} background={undefined} />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });
