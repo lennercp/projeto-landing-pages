@@ -17,7 +17,7 @@ describe('<LogoLink />', () => {
 
   it('should render image logo', () => {
     renderTheme(
-      <LogoLink link="#target" text="Olá mundo" srcImage="image.jpg" />,
+      <LogoLink link="#target" text="Olá mundo" srcImg="image.jpg" />,
     );
     const image = screen.getByRole('img', { name: 'Olá mundo' });
     expect(image).toHaveAttribute('src', 'image.jpg');

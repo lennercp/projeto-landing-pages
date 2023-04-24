@@ -36,7 +36,7 @@ describe('<${name} />', () => {
 `,
   styles: (name) =>
     "import styled, { css } from 'styled-components';" +
-    '\nexport const Container = styled.div`' +
+    '\n\nexport const Container = styled.div`' +
     '\n\t${({ theme }) => css``}' +
     '\n`;' +
     '',
