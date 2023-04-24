@@ -39,7 +39,7 @@ describe('<${name} />', () => {
     '\n\nexport const Container = styled.div`' +
     '\n\t${({ theme }) => css``}' +
     '\n`;' +
-    '',
+    '\n',
   stories: (name) =>
     `import { ${name} } from '.';
 
@@ -57,11 +57,10 @@ export default {
 export const Template = (args) => {
   return (
     <div>
-      < ${name} { ...args } />
-    </div >
+      <${name} { ...args } />
+    </div>
   );
 };
-
 `,
 };
 
