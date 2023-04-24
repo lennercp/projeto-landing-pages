@@ -21,6 +21,9 @@ exports[`<Menu /> should not render links 1`] = `
   right: 0;
   bottom: 0;
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border-bottom: #ddd;
   background: #fff;
   -webkit-transition: all 300ms ease-in-out;
@@ -242,6 +245,9 @@ exports[`<Menu /> should render Logo and Main Menu Nav 1`] = `
   right: 0;
   bottom: 0;
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border-bottom: #ddd;
   background: #fff;
   -webkit-transition: all 300ms ease-in-out;

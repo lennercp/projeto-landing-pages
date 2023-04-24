@@ -2,11 +2,12 @@ import { renderTheme } from '../../styles/render-theme';
 import { screen } from '@testing-library/react';
 import { theme } from '../../styles/theme';
 import { Base } from '.';
+import { mockBase } from './stories';
 
 describe('<Base />', () => {
-  it('should render', () => {
-    renderTheme(<Base>Children</Base>);
+  it('should match snapshot', () => {
+    const { container } = renderTheme(<Base {...mockBase} />);
 
-    expect();
+    expect(container).toMatchSnapshot();
   });
 });
