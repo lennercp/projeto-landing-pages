@@ -89,6 +89,27 @@
               "section_id": "grid-one",
               "background": true
             }
+          },
+          {
+            "id": 4,
+            "__component": "section.section-grid",
+            "title": "MY GRID",
+            "description": "Uma breve descrição.\n\n",
+            "text_grid": [],
+            "image_grid": [
+              {
+                "id": 1
+              },
+              {
+                "id": 2
+              }
+            ],
+            "metadata": {
+              "id": 12,
+              "name": "grid-one",
+              "section_id": "grid-one",
+              "background": true
+            }
           }
         ],
         "menu": {

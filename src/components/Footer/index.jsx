@@ -4,7 +4,6 @@ import { TextComponent } from '../TextComponent';
 import { SectionContainer } from '../SectionContainer';
 
 export const Footer = ({ footerHtml }) => {
-  console.log(footerHtml);
   return (
     <Styled.Container>
       <SectionContainer>

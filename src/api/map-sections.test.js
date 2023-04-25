@@ -6,11 +6,36 @@ import {
   mapTextGrid,
 } from './map-sections';
 
+import pagesFakeData from './dados.json';
+
 describe('map-sections', () => {
   it('should render predefined section if no data', () => {
     const data = mapSections();
     expect(data).toEqual([]);
   });
+
+  it('should render sections with correct data', () => {
+    const data = mapSections(pagesFakeData.data[0].attributes.sections);
+    expect(data[0].component).toBe('section.section-two-columns');
+  });
+
+  it('should test section with invalid data', () => {
+    const withNoTextOrImageGrid = mapSections([
+      {
+        __component: 'section.section-grid',
+      },
+    ]);
+
+    const withNoComponent = mapSections([{}]);
+
+    expect(withNoTextOrImageGrid).toEqual([
+      {
+        __component: 'section.section-grid',
+      },
+    ]);
+    expect(withNoComponent).toEqual([{}]);
+  });
+
   it('should map section two columns with no data', () => {
     const data = mapSectionTwoColumns();
     expect(data.background).toBe(false);
@@ -23,39 +48,18 @@ describe('map-sections', () => {
 
   it('should map section two columns with correct values', () => {
     const data = mapSectionTwoColumns({
-      id: 4,
       __component: 'section.section-two-columns',
       title: 'title test',
       description: 'description test',
       image: {
         data: {
-          id: 4,
           attributes: {
-            name: 'javascript.svg',
             alternativeText: 'javascript.svg',
-            caption: 'javascript.svg',
-            width: null,
-            height: null,
-            formats: null,
-            hash: 'javascript_8c37407653',
-            ext: '.svg',
-            mime: 'image/svg+xml',
-            size: 30.31,
             url: 'test.png',
-            previewUrl: null,
-            provider: 'cloudinary',
-            provider_metadata: {
-              public_id: 'javascript_8c37407653',
-              resource_type: 'image',
-            },
-            createdAt: '2022-05-07T12:24:52.179Z',
-            updatedAt: '2022-05-07T12:24:52.179Z',
           },
         },
       },
       metadata: {
-        id: 11,
-        name: 'home',
         section_id: 'test',
         background: true,
       },
@@ -79,13 +83,10 @@ describe('map-sections', () => {
 
   it('should map section content with correct values', () => {
     const data = mapSectionContent({
-      id: 4,
       __component: 'section.section-content',
       title: 'title test',
       content: 'html test',
       metadata: {
-        id: 10,
-        name: 'intro',
         section_id: 'intro',
         background: false,
       },
@@ -109,7 +110,6 @@ describe('map-sections', () => {
 
   it('should map section text grid with correct values', () => {
     const data = mapTextGrid({
-      id: 1,
       __component: 'section.section-grid',
       title: 'title test',
       description: 'description test',
@@ -127,8 +127,6 @@ describe('map-sections', () => {
       ],
       image_grid: [],
       metadata: {
-        id: 2,
-        name: 'grid-one',
         section_id: 'grid-one',
         background: true,
       },
@@ -154,7 +152,6 @@ describe('map-sections', () => {
 
   it('should map section image grid with correct values', () => {
     const data = mapImageGrid({
-      id: 1,
       __component: 'section.section-grid-image',
       title: 'title test',
       description: 'description test',
@@ -164,33 +161,14 @@ describe('map-sections', () => {
             data: {
               id: 4,
               attributes: {
-                name: 'javascript.svg',
                 alternativeText: 'alt',
-                caption: 'javascript.svg',
-                width: null,
-                height: null,
-                formats: null,
-                hash: 'javascript_8c37407653',
-                ext: '.svg',
-                mime: 'image/svg+xml',
-                size: 30.31,
                 url: 'a.svg',
-                previewUrl: null,
-                provider: 'cloudinary',
-                provider_metadata: {
-                  public_id: 'javascript_8c37407653',
-                  resource_type: 'image',
-                },
-                createdAt: '2022-05-07T12:24:52.179Z',
-                updatedAt: '2022-05-07T12:24:52.179Z',
               },
             },
           },
         },
       ],
       metadata: {
-        id: 2,
-        name: 'grid-one',
         section_id: 'grid-one',
         background: true,
       },
