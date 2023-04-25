@@ -1,11 +1,15 @@
-import { mapSectionTwoColumns, mapSections } from './map-sections';
+import {
+  mapSectionContent,
+  mapSectionTwoColumns,
+  mapSections,
+} from './map-sections';
 
 describe('map-sections', () => {
   it('should render predefined section if no data', () => {
     const data = mapSections();
     expect(data).toEqual([]);
   });
-  it('should map section two columns', () => {
+  it('should map section two columns with no data', () => {
     const data = mapSectionTwoColumns();
     expect(data.background).toBe(false);
     expect(data.component).toBe('');
@@ -59,6 +63,35 @@ describe('map-sections', () => {
     expect(data.sectionId).toBe('test');
     expect(data.srcImg).toBe('test.png');
     expect(data.text).toBe('description test');
+    expect(data.title).toBe('title test');
+  });
+
+  it('should map section content with no data', () => {
+    const data = mapSectionContent();
+    expect(data.background).toBe(false);
+    expect(data.component).toBe('');
+    expect(data.sectionId).toBe('');
+    expect(data.html).toBe('');
+    expect(data.title).toBe('');
+  });
+
+  it('should map section content with correct values', () => {
+    const data = mapSectionContent({
+      id: 4,
+      __component: 'section.section-content',
+      title: 'title test',
+      content: 'html test',
+      metadata: {
+        id: 10,
+        name: 'intro',
+        section_id: 'intro',
+        background: false,
+      },
+    });
+    expect(data.background).toBe(false);
+    expect(data.component).toBe('section.section-content');
+    expect(data.sectionId).toBe('intro');
+    expect(data.html).toBe('html test');
     expect(data.title).toBe('title test');
   });
 });
