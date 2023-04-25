@@ -4,6 +4,7 @@ import { mockBase } from '../Base/mock';
 import * as Styled from './styles';
 import { mapData } from '../../api/map-data';
 import { PageNotFound } from '../PageNotFound';
+import { Loading } from '../Loading';
 
 function Home() {
   const [data, setData] = useState([]);
@@ -18,7 +19,6 @@ function Home() {
         const json = await data.json();
         const { attributes } = json.data[0];
         const pageData = mapData([attributes]);
-        console.log(pageData[0]);
         setData(pageData[0]);
       } catch (e) {
         setData(undefined);
@@ -38,7 +38,7 @@ function Home() {
     return <PageNotFound />;
   }
   if (data && !data.slug) {
-    return <h1>carregando...</h1>;
+    return <Loading />;
   }
   return <Base {...mockBase} />;
 }
