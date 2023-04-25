@@ -3,8 +3,8 @@ export const mapMenu = (menu = {}) => {
     open_in_new_tab: newTab = false,
     logo_text: text = '',
     logo_link: link = '',
-    logo: { url: srcImg = '' } = '', //aqui vai pegar de logo o url e nomeala para secImg
-    menu: links = [],
+    logo: { data: { attributes: { url: srcImg = '' } = '' } = '' } = '', //aqui vai pegar de logo o url e nomeala para secImg
+    menu_links: links = [],
   } = menu;
 
   return {
