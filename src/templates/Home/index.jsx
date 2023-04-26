@@ -15,6 +15,8 @@ import { GridText } from '../../components/GridText';
 import { GridImage } from '../../components/GridImage';
 import { useLocation } from 'react-router-dom';
 
+import configs from '../../config';
+
 function Home() {
   const [data, setData] = useState([]);
   const isMounted = useRef(true);
@@ -22,17 +24,14 @@ function Home() {
 
   useEffect(() => {
     const pathName = location.pathname.replace(/[^a-z0-9-_]/gi, '');
-    const slug = pathName ? pathName : 'olha-so-a-minha-pagina';
+    const slug = pathName ? pathName : configs.defaultSlug;
 
     const load = async () => {
       try {
-        const data = await fetch(
-          `http://localhost:1337/api/pages/?filters[slug]=${slug}&populate=deep,10`,
-        );
+        const data = await fetch(configs.url + slug + '&populate=deep,10');
         const json = await data.json();
         const { attributes } = json.data[0];
         const pageData = mapData([attributes]);
-        console.log(pageData[0]);
         setData(pageData[0]);
       } catch (e) {
         setData(undefined);
@@ -47,6 +46,18 @@ function Home() {
       isMounted.current = false;
     };
   }, [location]);
+
+  useEffect(() => {
+    if (data === undefined) {
+      document.title = `Página não encontrada|${configs.titleName}`;
+    }
+    if (data && !data.slug) {
+      document.title = `Carregando|${configs.titleName}`;
+    }
+    if (data && data.slug) {
+      document.title = data.title + `|${configs.titleName}`;
+    }
+  }, [data]);
 
   if (data === undefined) {
     return <PageNotFound />;
@@ -65,10 +76,6 @@ function Home() {
     >
       {sections.map((section, index) => {
         const { component } = section;
-        console.log(
-          '🚀 ~ file: index.jsx:61 ~ {sections.map ~ component:',
-          component,
-        );
         const key = `${slug}-${index}`;
 
         if (component === 'section.section-two-columns') {
