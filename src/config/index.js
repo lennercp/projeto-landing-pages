@@ -1,5 +1,5 @@
 export default {
-  url: 'http://localhost:1337/api/pages/?filters[slug]=',
+  url: 'https://landing-pages-f3l2.onrender.com/api/pages/?filters[slug]=',
   titleName: 'Lenner Coutinho',
   defaultSlug: 'olha-so-a-minha-pagina',
 };
